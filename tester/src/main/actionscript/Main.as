@@ -102,7 +102,7 @@ public class Main extends Sprite {
             log(message);
         });
 
-        log("EXT_MD5: " + extension.callNative(CryptoPPExtension.EXT_MD5));
+        extension.callNative(CryptoPPExtension.EXT_SHA_512, "HelloWorld");
     }
 
     /**

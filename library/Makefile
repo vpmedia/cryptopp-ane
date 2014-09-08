@@ -61,7 +61,7 @@ build:
 # Generate DLL Resource
 	windres -i resource.rc -o resource.o
 # Compile Program
-	$(CC) $(CXXFLAGS) -I./botan/build/include/botan -DEXPORT -c dllmain.cpp ClientExtension.cpp
+	$(CC) $(CXXFLAGS) -I./cryptopp -DEXPORT -c dllmain.cpp ClientExtension.cpp
 # Assemble DLL
 	$(CC) -o ClientExtension.dll -shared -static-libgcc -static-libstdc++ \
 	-Wl,--subsystem,windows,--output-def,ClientExtension.def,--out-implib,libClientExtension.a \
@@ -69,8 +69,8 @@ build:
 
 test:
 	@echo "--------------------------------------------- Test --------------------------------------------"
-	$(CC) $(CXXFLAGS) -DEXPORT -c ClientExtensionTest.cpp -I./botan/build/include
-	$(CC) -o ClientExtensionTest.exe ClientExtensionTest.o -I./botan/build/include -L./. -lcryptopp
+	$(CC) $(CXXFLAGS) -DEXPORT -c ClientExtensionTest.cpp -I./cryptopp
+	$(CC) -o ClientExtensionTest.exe ClientExtensionTest.o -I./cryptopp -L./. -lcryptopp
 	./ClientExtensionTest
 
 deploy:

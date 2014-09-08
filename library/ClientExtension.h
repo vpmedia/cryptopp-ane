@@ -41,6 +41,29 @@
 #define CLIENTEXTENSION_H
 
 //----------------------------------
+// Import Standard Headers
+//----------------------------------
+
+// Input/output
+#include "stdio.h"
+// General utilities: memory management, program utilities, string conversions, random numbers
+#include "stdlib.h"
+// Fixed-width integer types
+#include "stdint.h"
+// String handling
+#include "string.h"
+// Macros supporting type boolean
+#include "stdbool.h"
+// Common mathematics functions
+#include "math.h"
+// Sizes of basic types
+#include "limits.h"
+// Windows related helpers
+#include "windows.h"
+// Grabs std::string
+#include <iostream>
+
+//----------------------------------
 //  CPP
 //----------------------------------
 
@@ -89,7 +112,7 @@ DLLIMPORT void ClientExtensionFinalizer(void* extData);
 #define LOG_ENABLED 1
 #define LOG_FILE_ENABLED 1
 #define LOG_CONSOLE_ENABLED 0
-#define LOG_FILE "C:/Work/cgs-crypt-ane.log"
+#define LOG_FILE "C:/Work/cryptopp-ane.log"
 
 #ifdef LOG_ENABLED
     #define DEBUG_PRINT(msg) print(msg)

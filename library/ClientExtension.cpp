@@ -41,32 +41,11 @@
 #include "ClientExtension.h"
 
 //----------------------------------
-// Import Standard Headers
-//----------------------------------
-
-// Input/output
-#include "stdio.h"
-// General utilities: memory management, program utilities, string conversions, random numbers
-#include "stdlib.h"
-// Fixed-width integer types
-#include "stdint.h"
-// String handling
-#include "string.h"
-// Macros supporting type boolean
-#include "stdbool.h"
-// Common mathematics functions
-#include "math.h"
-// Sizes of basic types
-#include "limits.h"
-// Windows related helpers
-#include "windows.h"
-
-//----------------------------------
 // Constants
 //----------------------------------
 
 // Common
-#define EXT_MD5 1
+#define EXT_SHA_512 1
 
 //----------------------------------
 // Properties
@@ -79,6 +58,18 @@ FREContext dllContext;
 //  API
 //----------------------------------
 
+FREObject SHA_512(std::string input) { 
+    // create result
+    FREObject result = NULL;
+    // process input
+    std::string resultStr = "TODO";
+    // process output
+    uint32_t resultLen = resultStr.length();
+    FRENewObjectFromUTF8(resultLen, (const uint8_t*)resultStr.c_str(), &result);
+    // return result
+    return result;
+}
+
 /**
  *  Global Wrapper
  *  
@@ -90,10 +81,29 @@ FREContext dllContext;
  *  @return Int32 serialized as an FREObject variable.
  */
 FREObject callNative(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[]) {    
-    // TODO
-    // result
-    FREObject result = NULL;
-    FRENewObjectFromInt32(0, &result);
+    // result data
+    FREObject result = NULL;  
+    // get command type parameter
+    int32_t type; 
+    FREGetObjectAsInt32(argv[0], &type);
+    // get command value parameter (string to hash/crypt)
+    uint32_t dataLen; 
+    const uint8_t* data;
+    if(argc <= 1) {
+        FRENewObjectFromInt32(-1, &result); 
+        return result;
+    }
+    FREGetObjectAsUTF8(argv[1], &dataLen, &data);  
+    std::string dataStr( data, data+dataLen );
+    // get result
+    switch (type) {
+         case EXT_SHA_512:
+            result = SHA_512(dataStr);
+           break;
+         default:
+            FRENewObjectFromInt32(0, &result); 
+            break;
+    }      
     // Return result
     return result;
 }

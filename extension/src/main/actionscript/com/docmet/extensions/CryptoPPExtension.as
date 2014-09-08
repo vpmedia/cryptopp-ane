@@ -71,7 +71,7 @@ public class CryptoPPExtension extends EventDispatcher {
     /**
      * TBD
      */
-    public static const EXT_MD5:uint = 0;
+    public static const EXT_SHA_512:uint = 1;
 
     //----------------------------------
     //  Constructor
