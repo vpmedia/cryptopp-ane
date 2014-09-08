@@ -54,6 +54,7 @@ clean:
 init:
 	@echo "-------------------------------------------- Init --------------------------------------------"
 	cp $(AIR_HOME)/lib/win/FlashRuntimeExtensions.lib .
+	cp cryptopp/libcryptopp.a .
 
 build:
 	@echo "-------------------------------------------- Build -------------------------------------------"
@@ -64,12 +65,12 @@ build:
 # Assemble DLL
 	$(CC) -o ClientExtension.dll -shared -static-libgcc -static-libstdc++ \
 	-Wl,--subsystem,windows,--output-def,ClientExtension.def,--out-implib,libClientExtension.a \
-	dllmain.o ClientExtension.o resource.o FlashRuntimeExtensions.lib -L./.
+	dllmain.o ClientExtension.o resource.o FlashRuntimeExtensions.lib -L./. -lcryptopp
 
 test:
 	@echo "--------------------------------------------- Test --------------------------------------------"
 	$(CC) $(CXXFLAGS) -DEXPORT -c ClientExtensionTest.cpp -I./botan/build/include
-	$(CC) -o ClientExtensionTest.exe ClientExtensionTest.o -I./botan/build/include -L./.
+	$(CC) -o ClientExtensionTest.exe ClientExtensionTest.o -I./botan/build/include -L./. -lcryptopp
 	./ClientExtensionTest
 
 deploy:
