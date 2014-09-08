@@ -31,7 +31,7 @@
 apply plugin: 'maven'
 
 artifacts {
-    archives file: file('extension/publish/Main.ane'), name: 'ane_cryptopp'
+    archives file: file('extension/publish/Main.ane'), name: 'cryptopp-ane'
 }
 
 uploadArchives {
