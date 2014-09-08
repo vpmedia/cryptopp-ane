@@ -1,7 +1,7 @@
 cryptopp-ane
 ============
 
-CryptoPP Adobe AIR Native Extension for Windows
+CryptoPP Adobe AIR Native Extension
 
 [![Build Status](https://travis-ci.org/vpmedia/cryptopp-ane.png?branch=master)](https://travis-ci.org/vpmedia/cryptopp-ane)
 
