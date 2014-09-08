@@ -71,17 +71,7 @@ public class CryptoPPExtension extends EventDispatcher {
     /**
      * TBD
      */
-    public static const EXT_HAS_CPU_ID:uint = 0;
-
-    /**
-     * TBD
-     */
-    public static const EXT_GET_CPU_ID:uint = 1;
-
-    /**
-     * TBD
-     */
-    public static const EXT_GET_HDD_ID:uint = 2;
+    public static const EXT_MD5:uint = 0;
 
     //----------------------------------
     //  Constructor
