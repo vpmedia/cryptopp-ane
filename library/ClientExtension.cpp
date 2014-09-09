@@ -62,7 +62,14 @@ FREObject SHA_512(std::string input) {
     // create result
     FREObject result = NULL;
     // process input
-    std::string resultStr = "TODO";
+    CryptoPP::SHA512 hash;
+    byte digest[ CryptoPP::SHA512::DIGESTSIZE ];
+    hash.CalculateDigest( digest, (byte*) input.c_str(), input.length() );
+    CryptoPP::HexEncoder encoder;
+    std::string resultStr;
+    encoder.Attach( new CryptoPP::StringSink( resultStr ) );
+    encoder.Put( digest, sizeof(digest) );
+    encoder.MessageEnd();
     // process output
     uint32_t resultLen = resultStr.length();
     FRENewObjectFromUTF8(resultLen, (const uint8_t*)resultStr.c_str(), &result);
