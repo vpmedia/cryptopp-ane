@@ -62,6 +62,17 @@
 // IOStream
 #include <iostream> 
 
+// CryptoPP
+#include "asn.h"
+#include "base64.h"
+#include "cpu.h"
+#include "crc.h"
+#include "hex.h"
+#include "hmac.h"
+#include "rijndael.h"
+#include "sha.h"
+#include "sha3.h"
+
 //----------------------------------
 //  CPP
 //----------------------------------

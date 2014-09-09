@@ -29,7 +29,7 @@ cmake_install.cmake
 
 # C Library
 *.o
-*.dll
+library/*.dll
 *.exe
 *.def
 *.a

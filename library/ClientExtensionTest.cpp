@@ -49,6 +49,22 @@
 
 int main(int argc, char** argv)
 {
+    
+    printf("Testing Crypto\n");    
         
+    CryptoPP::SHA512 hash;
+    byte digest[ CryptoPP::SHA512::DIGESTSIZE ];
+    std::string message = "HelloWorld";
+
+    hash.CalculateDigest( digest, (byte*) message.c_str(), message.length() );
+
+    CryptoPP::HexEncoder encoder;
+    std::string output;
+    encoder.Attach( new CryptoPP::StringSink( output ) );
+    encoder.Put( digest, sizeof(digest) );
+    encoder.MessageEnd();
+
+    std::cout << output << std::endl; 
+    
     return EXIT_SUCCESS;
 }

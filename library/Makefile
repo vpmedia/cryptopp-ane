@@ -70,7 +70,7 @@ build:
 test:
 	@echo "--------------------------------------------- Test --------------------------------------------"
 	$(CC) $(CXXFLAGS) -DEXPORT -c ClientExtensionTest.cpp -I./cryptopp
-	$(CC) -o ClientExtensionTest.exe ClientExtensionTest.o -I./cryptopp -L./. -lcryptopp
+	$(CC) -o ClientExtensionTest.exe -static-libgcc -static-libstdc++ ClientExtensionTest.o -I./cryptopp -L./. -lcryptopp
 	./ClientExtensionTest
 
 deploy:
