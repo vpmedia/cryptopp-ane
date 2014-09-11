@@ -29,7 +29,7 @@
  ~ =END MIT LICENSE
  ~
 -->
-<application xmlns="http://ns.adobe.com/air/application/14.0">
+<application xmlns="http://ns.adobe.com/air/application/15.0">
     <id>hu.cgs.ane.cryptopp.tester</id>
     <filename>CryptoPPANETester</filename>
     <name>CGS CryptoPP ANE Tester</name>

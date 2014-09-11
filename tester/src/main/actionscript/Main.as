@@ -92,6 +92,7 @@ public class Main extends Sprite {
         messageLabel.width = 800;
         messageLabel.height = 300;
         messageLabel.multiline = true;
+        messageLabel.wordWrap = true;
         messageLabel.defaultTextFormat = new TextFormat("Arial", 10, 0xFFFFFF);
         addChild(messageLabel);
 
