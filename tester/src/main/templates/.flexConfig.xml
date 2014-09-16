@@ -56,12 +56,4 @@
         <define append="true"><name>PLATFORM::MOBILE</name><value>false</value></define>
         <define append="true"><name>PLATFORM::WEB</name><value>false</value></define>
     </compiler>
-    <!-- Metadata added to SWFs via the SWF Metadata tag. -->
-    <metadata>
-        <title>CGS CryptoPP Extension Tester Client</title>
-        <description>http://www.docmet.com</description>
-        <creator>Docmet Systems</creator>
-        <publisher>Andras Csizmadia</publisher>
-        <language>EN</language>
-    </metadata>
 </flex-config>

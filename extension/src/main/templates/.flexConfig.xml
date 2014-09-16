@@ -40,12 +40,4 @@
         <define append="true"><name>APP::VERSION</name><value>"${version}"</value></define>
         <define append="true"><name>APP::DEBUG</name><value>${debug}</value></define>
     </compiler>
-    <!-- Metadata added to SWFs via the SWF Metadata tag. -->
-    <metadata>
-        <title>CGS CryptoPP Native Extension</title>
-        <description>http://www.docmet.com</description>
-        <creator>Docmet Systems</creator>
-        <publisher>Andras Csizmadia</publisher>
-        <language>EN</language>
-    </metadata>
 </flex-config>
