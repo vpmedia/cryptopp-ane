@@ -27,4 +27,4 @@
 // =END MIT LICENSE
 //
 
-include 'extension', 'tester'
+include 'android', 'extension', 'tester'
