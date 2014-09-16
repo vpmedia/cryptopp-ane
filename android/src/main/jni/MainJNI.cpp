@@ -27,25 +27,14 @@
  * =END MIT LICENSE
  *
  */
-package com.docmet.extensions;
-
-import com.adobe.fre.FREContext;
-import com.adobe.fre.FREFunction;
-import com.adobe.fre.FREObject;
-
-/**
- * Global API wrapper.
- */
-public class CommandCallNative implements FREFunction  {
-    public FREObject call(FREContext ctx, FREObject[] passedArgs) {
-        System.out.println("CommandCallNative successfully called.");
-        System.out.println(stringFromJNI());
-        return null;
-    }
-    
-    public native String stringFromJNI();
-      
-    static {
-        System.loadLibrary("MainJNI");
-    }
+#include <string.h>
+#include <jni.h>
+extern "C" {
+      JNIEXPORT jstring JNICALL
+      Java_com_docmet_extensions_CommandCallNative_stringFromJNI
+      (JNIEnv *env, jobject obj)
+      {
+            return env->NewStringUTF("Hello from C++ over JNI!");
+      }
 }
+

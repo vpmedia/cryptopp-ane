@@ -36,4 +36,4 @@ AIR Native Extension for the [Crypto++® Library](http://www.cryptopp.com)
 
 ### ANE
 
-1. run **gradle**
+1. run **gradlew**

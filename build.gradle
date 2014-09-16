@@ -40,9 +40,4 @@ uploadArchives {
     }
 }
 
-task analyze << {
-}
-
-analyze.dependsOn uploadArchives
-
-defaultTasks 'clean', 'package_all', 'analyze'
+defaultTasks 'clean', 'package_all', 'uploadArchives'
