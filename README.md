@@ -21,6 +21,19 @@ AIR Native Extension for the [Crypto++® Library](http://www.cryptopp.com)
 
 ## Building
 
-* cd library/cryptopp && build
-* cd library && build
-* gradle
+### Android
+
+1. cd android && ..\gradlew
+
+### iOS
+
+1. run **xctool** or **xcodebuild**
+
+### Windows
+
+1. cd library/cryptopp && build
+2. cd library && build
+
+### ANE
+
+1. run **gradle**

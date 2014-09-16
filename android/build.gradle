@@ -69,14 +69,4 @@ android {
     }
 } 
 
-/*artifacts {
-    archives jar
-}
-
-uploadArchives {
-    repositories {
-        mavenLocal() 
-    }
-}*/
-
-//defaultTasks 'clean', 'jar'
+defaultTasks 'assemble'
