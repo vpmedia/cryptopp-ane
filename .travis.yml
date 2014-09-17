@@ -66,4 +66,4 @@ before_script:
     - export AIR_HOME="/usr/local/opt/adobe-air-sdk/libexec"
 
 script:
-    - gradle
+    - gradlew
