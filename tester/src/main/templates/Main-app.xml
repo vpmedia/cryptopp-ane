@@ -42,7 +42,7 @@
         <title>CryptoPP ANE Tester ${version}</title>
         <visible>true</visible>
     </initialWindow>
-    <supportedProfiles>extendedDesktop mobileDevice</supportedProfiles>
+    <supportedProfiles>extendedDesktop extendedMobileDevice mobileDevice</supportedProfiles>
     <installFolder>Docmet</installFolder> 
     <programMenuFolder>Docmet</programMenuFolder>
     <icon>
