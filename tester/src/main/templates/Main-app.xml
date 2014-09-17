@@ -42,7 +42,7 @@
         <title>CryptoPP ANE Tester ${version}</title>
         <visible>true</visible>
     </initialWindow>
-    <supportedProfiles>extendedDesktop</supportedProfiles>
+    <supportedProfiles>extendedDesktop mobileDevice</supportedProfiles>
     <installFolder>Docmet</installFolder> 
     <programMenuFolder>Docmet</programMenuFolder>
     <icon>
@@ -51,6 +51,48 @@
         <image48x48>icons/icon_48.png</image48x48>
         <image128x128>icons/icon_128.png</image128x128>
     </icon>
+    <android>
+        <colorDepth>16bit</colorDepth>
+        <!-- https://developer.android.com/reference/android/Manifest.permission.html -->
+        <manifestAdditions>
+            <![CDATA[            
+            <manifest android:installLocation="auto">
+                <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> 
+                <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+                <uses-permission android:name="android.permission.DISABLE_KEYGUARD" /> 
+                <uses-permission android:name="android.permission.INTERNET" /> 
+                <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+                <uses-permission android:name="android.permission.WAKE_LOCK" /> 
+                <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> 
+                <uses-feature android:required="true" android:name="android.hardware.touchscreen.multitouch"/>
+                <application android:hardwareAccelerated="true"/> 
+            </manifest>            
+        ]]>
+        </manifestAdditions>
+    </android>
+    <iPhone>
+        <!-- https://developer.apple.com/library/ios/documentation/general/Reference/InfoPlistKeyReference/Articles/iPhoneOSKeys.html -->
+        <InfoAdditions>
+            <![CDATA[
+            <key>UIStatusBarStyle</key> 
+            <string>UIStatusBarStyleBlackOpaque</string> 
+            <key>UIRequiresPersistentWiFi</key> 
+            <string>YES</string>
+            <key>UIPrerenderedIcon</key>  
+            <true/>
+            <key>UIApplicationExitsOnSuspend</key>
+            <true/>
+            <key>UIDeviceFamily</key>
+            <array>
+                <!-- iPhone support -->
+                <string>1</string> 
+                <!-- iPad support -->
+                <string>2</string>
+            </array>
+        ]]>
+        </InfoAdditions>
+        <requestedDisplayResolution>high</requestedDisplayResolution>
+    </iPhone>
     <extensions>
         <extensionID>com.docmet.extensions.CryptoPPExtension</extensionID>
     </extensions>
