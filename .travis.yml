@@ -59,7 +59,7 @@ before_script:
     - cp -f /usr/local/opt/adobe-air-sdk/libexec/frameworks/libs/player/15.0/playerglobal.swc flex_sdk/frameworks/libs/player/11.1/
     - cp -f /usr/local/opt/adobe-air-sdk/libexec/frameworks/libs/player/15.0/playerglobal.swc flex_sdk/frameworks/libs/player/15.0/
     # Init Android SDK
-    - echo yes | android update sdk --filter tools,platform-tools,android-20,build-tools-20.0.0 --force --no-ui > /dev/null
+    - echo yes | android update sdk --filter platform-tools,android-20,build-tools-20.0.0 --force --no-ui > /dev/null
     - export ANDROID_HOME=/usr/local/opt/android-sdk
     - export NDK_ROOT=/usr/local/opt/android-ndk
     # Set env. variable used by Gradle
