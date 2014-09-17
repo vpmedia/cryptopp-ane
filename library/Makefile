@@ -43,9 +43,9 @@ CXXFLAGS=-Wall -O4 -Wno-unused-function -Wno-unused-value -Wno-unused-variable -
 CC=g++
 LDLIBS=
 
-all: clean init build test deploy
+all: clean init build test 
 
-.PHONY: all clean init build test deploy
+.PHONY: all clean init build test 
 
 clean:
 	@echo "------------------------------------------- Clean --------------------------------------------"
@@ -72,9 +72,3 @@ test:
 	$(CC) $(CXXFLAGS) -DEXPORT -c ClientExtensionTest.cpp -I./cryptopp
 	$(CC) -o ClientExtensionTest.exe -static-libgcc -static-libstdc++ ClientExtensionTest.o -I./cryptopp -L./. -lcryptopp
 	./ClientExtensionTest
-
-deploy:
-	@echo "-------------------------------------------- Deploy -------------------------------------------"
-	pwd
-	mkdir -p ../extension/src/main/native/Windows-x86/
-	cp ClientExtension.dll ../extension/src/main/native/Windows-x86/

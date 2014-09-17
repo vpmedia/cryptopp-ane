@@ -47,6 +47,5 @@ local.properties
 *.o
 *.a
 *.exe
-*.dll
 *.lib
 *.def
