@@ -91,6 +91,20 @@ binaries.withType(SharedLibraryBinary) {
     }
 }
 
+task runtimeTest << {
+    def aneDIR = file('../extension/temp/unzippedANE')
+    copy {
+        def zipFile = file('../extension/publish/Main.ane')
+        from zipTree(zipFile)
+        into aneDIR.absolutePath + '/Main.ane' 
+    }
+    def output = exec {
+        workingDir = tempDir
+        executable = "${AIR_HOME}/bin/adl"
+        args = ['-profile', 'extendedDesktop', '-extdir', aneDIR, 'Main-app.xml', tempDir]
+    }
+}
+
 task package_all << {}
 package_all.dependsOn 'mainSharedLibrary'
 
