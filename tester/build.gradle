@@ -171,6 +171,7 @@ task package_init << {
 task package_move << {
     publishDir.mkdirs()
     ant.move(file: "temp/Main.exe", todir: publishDir)
+    ant.move(file: "temp/Main.apk", todir: publishDir)
 }
 
 task package_exe(type: JavaExec) { 
