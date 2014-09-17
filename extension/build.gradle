@@ -77,6 +77,10 @@ if (Os.isFamily(Os.FAMILY_WINDOWS)) {
     project(":extension").afterEvaluate { 
         extension -> extension.compile.dependsOn ':windows:package_all'
     }
+} else {
+    project(":extension").afterEvaluate { 
+        extension -> extension.compile.dependsOn ':ios:package_all'
+    }
 }
 
 // add additional jars to the AntBuilder classpath for use within the imported build.

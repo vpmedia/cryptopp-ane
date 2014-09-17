@@ -44,4 +44,7 @@ xcodebuild {
   target = 'ClientExtension'
 }
 
-defaultTasks 'build'
+task package_all << {}
+package_all.dependsOn 'build'
+
+defaultTasks 'clean', 'build'
