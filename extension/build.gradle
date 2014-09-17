@@ -29,6 +29,8 @@
 
 // author: Andras Csizmadia
 
+import org.apache.tools.ant.taskdefs.condition.Os
+
 repositories {
     mavenLocal()
     mavenCentral()
@@ -69,6 +71,9 @@ dependencies {
     test group: 'org.codehaus.plexus', name: 'plexus-utils', version: '3.0.17', ext: 'jar'
     antClassPath 'ant-contrib:ant-contrib:1.0b3', 'org.apache.ant:ant-junit:1.9.4'
     compile project(':android')
+    if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+        compile project(':windows')
+    }
 }
 
 // add additional jars to the AntBuilder classpath for use within the imported build.
@@ -207,7 +212,7 @@ task package_init << {
         into tempDir.absolutePath + '/libs'
     }    
     ant.copy(file: '../android/build/intermediates/bundles/release/classes.jar', tofile: tempDir.absolutePath + '/ClientExtension.jar') 
-    ant.copy(file: '../library/ClientExtension.dll', tofile: tempDir.absolutePath + '/ClientExtension.dll')
+    ant.copy(file: '../windows/ClientExtension.dll', tofile: tempDir.absolutePath + '/ClientExtension.dll')
 }
 
 task package_ane(type: JavaExec) {

@@ -51,13 +51,18 @@ model {
      repositories {
         libs(PrebuiltLibraries) {
             FlashRuntimeExtensions { 
-                headers.srcDir file('src/main/headers')
                 binaries.withType(StaticLibraryBinary) {
                     staticLibraryFile = file("${AIR_HOME}/lib/win/FlashRuntimeExtensions.lib")
                 }
                 binaries.withType(SharedLibraryBinary) {
                     sharedLibraryFile = file("${AIR_HOME}/runtimes/air/win/Adobe AIR/Versions/1.0/Adobe AIR.dll")
                     sharedLibraryLinkFile = file("${AIR_HOME}/lib/win/FlashRuntimeExtensions.lib")
+                }
+            }
+            common { 
+                headers.srcDir file('../common')
+                binaries.withType(StaticLibraryBinary) {
+                    staticLibraryFile = file("../common/libcryptopp.a")
                 }
             }
         }
@@ -73,6 +78,7 @@ sources {
     main {
         cpp {
             lib library: 'FlashRuntimeExtensions', linkage: 'shared'
+            lib library: 'common', linkage: 'static'
         } 
     }
 }
@@ -85,4 +91,7 @@ binaries.withType(SharedLibraryBinary) {
     }
 }
 
-defaultTasks 'clean', 'assemble'
+task package_all << {}
+package_all.dependsOn 'mainSharedLibrary'
+
+defaultTasks 'clean', 'package_all'

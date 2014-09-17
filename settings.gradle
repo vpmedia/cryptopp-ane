@@ -27,4 +27,9 @@
 // =END MIT LICENSE
 //
 
+import org.apache.tools.ant.taskdefs.condition.Os
+if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+    include 'windows'
+}
+
 include 'android', 'extension', 'tester'

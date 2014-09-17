@@ -56,7 +56,7 @@ if("${System.env.JENKINS_BUILD_VERSION}" != "null") {
 println "${group}.${project.name}-${version}"
 
 dependencies {
-    compile files("${AIR_HOME}/lib/android/FlashRuntimeExtensions.jar")
+    compile files("${AIR_HOME}/lib/android/FlashRuntimeExtensions.jar")  
 }
 
 android {
