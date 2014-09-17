@@ -84,6 +84,12 @@ def tempDir = new File(projectDir, '/temp')
 tempDir.mkdirs()
 def tempDirPath = tempDir.absolutePath
 
+def exeExt = '.dmg'
+import org.apache.tools.ant.taskdefs.condition.Os
+if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+    exeExt = '.exe'
+}
+
 //----------------------------------
 //  Tasks
 //----------------------------------
@@ -170,7 +176,7 @@ task package_init << {
 
 task package_move << {
     publishDir.mkdirs()
-    ant.move(file: "temp/Main.exe", todir: publishDir)
+    ant.move(file: "temp/Main" + exeExt, todir: publishDir)
     ant.move(file: "temp/Main.apk", todir: publishDir)
 }
 
