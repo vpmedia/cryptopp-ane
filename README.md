@@ -11,15 +11,15 @@ AIR Native Extension for the [Crypto++® Library](http://www.cryptopp.com)
 
 * JDK (Common)
 
-> Setting the JAVA_HOME env. variable is essential
+> Setting the **JAVA_HOME** env. variable is essential
 
 * Adobe AIR SDK (Flash)
 
-> Setting the AIR_HOME env. variable is essential
+> Setting the **AIR_HOME** env. variable is essential
 
 * MingW and MSys (Windows)
 
-> Setting the MINGW_HOME and MSYS_HOME env. variables is essential
+> Setting the **MINGW_HOME** and **MSYS_HOME** env. variables is essential
 
 * Android SDK and NDK (Android)
 

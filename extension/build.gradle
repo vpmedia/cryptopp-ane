@@ -71,8 +71,11 @@ dependencies {
     test group: 'org.codehaus.plexus', name: 'plexus-utils', version: '3.0.17', ext: 'jar'
     antClassPath 'ant-contrib:ant-contrib:1.0b3', 'org.apache.ant:ant-junit:1.9.4'
     compile project(':android')
-    if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-        compile project(':windows')
+}
+
+if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+    project(":extension").afterEvaluate { 
+        extension -> extension.compile.dependsOn ':windows:package_all'
     }
 }
 
