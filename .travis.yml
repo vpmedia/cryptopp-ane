@@ -39,7 +39,7 @@ before_script:
     # Update Brew silently
     - brew update >brew-update.log
     # Install Brew Packages silently
-    - brew install gradle adobe-air-sdk android-sdk >brew-install.log
+    - brew install gradle adobe-air-sdk android-sdk android-ndk >brew-install.log
     # Adobe Flash Player for CLI
     - brew install caskroom/cask/brew-cask
     - brew cask install flash-player-debugger
@@ -59,14 +59,15 @@ before_script:
     - cp -f /usr/local/opt/adobe-air-sdk/libexec/frameworks/libs/player/15.0/playerglobal.swc flex_sdk/frameworks/libs/player/15.0/
     # Init Android SDK
     - echo yes | android update sdk --filter tools,platform-tools,android-20,build-tools-20.0.0 --force --no-ui > /dev/null
-    - "export ANDROID_HOME=/usr/local/opt/android-sdk"
+    - export ANDROID_HOME=/usr/local/opt/android-sdk
+    - export NDK_ROOT=/usr/local/opt/android-ndk
     # Set env. variable used by Gradle
     - export FLEX_HOME="$TRAVIS_BUILD_DIR/flex_sdk"
     # Init Adobe AIR SDK
     - mkdir -p /usr/local/opt/adobe-air-sdk/libexec/frameworks/libs/player/11.1/
     - cp -f /usr/local/opt/adobe-air-sdk/libexec/frameworks/libs/player/15.0/playerglobal.swc /usr/local/opt/adobe-air-sdk/libexec/frameworks/libs/player/11.1/
     # Set env. variable used by Gradle
-    - export AIR_HOME="/usr/local/opt/adobe-air-sdk/libexec"
+    - export AIR_HOME=/usr/local/opt/adobe-air-sdk/libexec
 
 script:
     - ./gradlew
