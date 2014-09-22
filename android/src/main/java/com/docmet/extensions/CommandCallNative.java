@@ -29,22 +29,54 @@
  */
 package com.docmet.extensions;
 
+import java.util.List;
+import java.util.ArrayList;
+
 import com.adobe.fre.FREContext;
 import com.adobe.fre.FREFunction;
 import com.adobe.fre.FREObject;
+
+import android.util.Log;
 
 /**
  * Global API wrapper.
  */
 public class CommandCallNative implements FREFunction  {
-    public FREObject call(FREContext ctx, FREObject[] passedArgs) {
-        System.out.println("CommandCallNative successfully called.");
-        System.out.println(stringFromJNI());
-        return null;
-    }
     
-    public native String stringFromJNI();
+    /*
+     * @private
+     */ 
+    private static final String TAG = "[CommandCallNative]";
+    
+    /*
+     * Command entry point
+     */ 
+    public FREObject call(FREContext ctx, FREObject[] passedArgs) {
+        FREObject result = null;
+        String commandResult = null;
+        try {
+            FREObject typeObj = passedArgs[0];
+            int type = typeObj.getAsInt();
+            List<String> nativeList = new ArrayList<String>();
+            //nativeList.add("passedArgs 1..N");
+            String[] nativeArgs = nativeList.toArray(new String[nativeList.size()]);
+            commandResult = callNative(type, nativeArgs.length, nativeArgs);
+            Log.d(TAG, "call: " + Integer.toString(type) + " => " + commandResult);
+            result = FREObject.newObject(commandResult);
+        } catch (Exception e) {
+            Log.d(TAG, "error: " + e.getMessage());
+        }
+        return result;
+    }    
       
+    /*
+     * JNI Example
+     */ 
+    public native String callNative(int type, int argc, String[] argv);
+    
+    /*
+     * @private
+     */ 
     static {
         System.loadLibrary("MainJNI");
     }

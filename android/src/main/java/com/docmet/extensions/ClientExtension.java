@@ -32,31 +32,48 @@ package com.docmet.extensions;
 import com.adobe.fre.FREContext;
 import com.adobe.fre.FREExtension;
 
+import android.util.Log;
+
 /**
  * Initialization and finalization class of native extension.
  */
-public class ClientExtension implements FREExtension
-{
+public class ClientExtension implements FREExtension {
     /*
-     * Creates a new instance of ClientExtensionContext when the context is created 
-     * from the AS3 code.
-     */
-    public FREContext createContext(String extId) {    
-        return new ClientExtensionContext();
-    }
+     * @private
+     */ 
+    private static final String TAG = "[ClientExtension]";
     
     /*
-     * Called if the extension is unloaded from the process. Extensions
-     * are not guaranteed to be unloaded; the runtime process may exit without
-     * doing so.
+     * @private
+     */ 
+    private ClientExtensionContext context;
+    
+    /*
+     * @inheritDoc
      */
-    @Override
-    public void dispose() {
+    public FREContext createContext(String extId) {  
+        Log.d(TAG, "createContext: " + extId);  
+        if(context == null) {
+            context = new ClientExtensionContext();
+        }
+        return context;
     }
 
     /*
-      * Extension initialization.
-      */  
+     * @inheritDoc
+     */  
     public void initialize( ) {
+        Log.d(TAG, "initialize");
+    }
+    
+    /*
+     * @inheritDoc
+     */
+    public void dispose() {
+        Log.d(TAG, "dispose");
+        if(context != null) {
+            context.dispose();
+        }
+        context = null;
     }
 }

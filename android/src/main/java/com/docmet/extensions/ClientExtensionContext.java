@@ -31,18 +31,33 @@ package com.docmet.extensions;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import com.adobe.fre.FREContext;
 import com.adobe.fre.FREFunction;
+
+import android.util.Log;
 
 /**
  * This class specifies the mapping between the AS3 functions and the Java native classes.
  */
-public class ClientExtensionContext extends FREContext 
-{
+public class ClientExtensionContext extends FREContext {
+
+    /*
+     * @private
+     */ 
+    private static final String TAG = "[ClientExtensionContext]";
+    
+    /*
+     * @inheritDoc
+     */
     @Override
     public void dispose() {
+        Log.d(TAG, "dispose");
     }
 
+    /*
+     * @inheritDoc
+     */
     @Override
     public Map<String, FREFunction> getFunctions() {
         // create wrapper map
