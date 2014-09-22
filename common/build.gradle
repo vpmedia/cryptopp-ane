@@ -27,17 +27,51 @@
 // =END MIT LICENSE
 //
 
-// needed for deploying
-apply plugin: 'maven'
-
-artifacts {
-    archives file: file('extension/publish/Main.ane'), name: 'botan-crypto-ane'
-}
-
-uploadArchives {
+buildscript {
     repositories {
         mavenLocal()
+        mavenCentral()
     }
 }
 
-defaultTasks 'clean', 'package_all', 'uploadArchives'
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+def MSYS_HOME = System.getenv('MSYS_HOME')
+def MINGW_HOME = System.getenv('MINGW_HOME')
+def PYTHON_HOME = System.getenv('PYTHONHOME')
+
+if("${System.env.JENKINS_BUILD_VERSION}" != "null") {
+    version = "${System.env.JENKINS_BUILD_VERSION}"
+}
+
+println "${group}.${project.name}-${version}"
+
+def exeExt = ''
+import org.apache.tools.ant.taskdefs.condition.Os
+if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+    exeExt = '.exe'
+}
+
+def buildDir = new File(projectDir, '/build')
+
+task clean << {
+    if (buildDir.isDirectory()) {
+        delete(buildDir)
+    }
+}
+
+task package_all << {
+    def output = exec {
+        workingDir = projectDir
+        executable = "make${exeExt}"
+        args = []
+    }
+}
+
+task analyze << {
+}
+
+defaultTasks 'clean', 'package_all', 'analyze'

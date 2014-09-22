@@ -43,8 +43,7 @@ repositories {
     mavenCentral()
 }
 
-String AIR_HOME = System.getenv('AIR_HOME')
-String ANT_HOME = System.getenv('ANT_HOME')
+def AIR_HOME = System.getenv('AIR_HOME')
 
 // apply plugin
 apply plugin: 'android-library'
