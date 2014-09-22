@@ -32,7 +32,7 @@ AIR Native Extension for the [Crypto++® Library](http://www.cryptopp.com)
 
 ## Building
 
-* run **gradlew**
+* run **gradle**
 
 ## License
 
