@@ -1,9 +1,5 @@
-cryptopp-ane
+cryptopp-ane [![Build Status](https://travis-ci.org/ane-community/cryptopp-ane.png?branch=master)](https://travis-ci.org/ane-community/cryptopp-ane)
 ============
-
-[![Build Status](https://travis-ci.org/ane-community/cryptopp-ane.png?branch=master)](https://travis-ci.org/ane-community/cryptopp-ane)
-
-## Introduction
 
 AIR Native Extension for the [Crypto++® Library](http://www.cryptopp.com)
 
