@@ -13,6 +13,10 @@ AIR Native Extension for the [Crypto++® Library](http://www.cryptopp.com)
 
 > Setting the **JAVA_HOME** env. variable is essential
 
+* Gradle (Common)
+
+> Setting the **GRADLE_HOME** env. variable is essential
+
 * Adobe AIR SDK (Flash)
 
 > Setting the **AIR_HOME** env. variable is essential
@@ -32,7 +36,7 @@ AIR Native Extension for the [Crypto++® Library](http://www.cryptopp.com)
 
 ## Building
 
-* run **gradle**
+* run **build**
 
 ## License
 
