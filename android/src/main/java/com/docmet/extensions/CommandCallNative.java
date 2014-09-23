@@ -58,7 +58,13 @@ public class CommandCallNative implements FREFunction  {
             FREObject typeObj = passedArgs[0];
             int type = typeObj.getAsInt();
             List<String> nativeList = new ArrayList<String>();
-            //nativeList.add("passedArgs 1..N");
+            int n = passedArgs.length;
+            if(n > 0) {
+                int i;
+                for(i = 1; i < n; i++) {
+                    nativeList.add(passedArgs[i].getAsString());                
+                }            
+            }
             String[] nativeArgs = nativeList.toArray(new String[nativeList.size()]);
             commandResult = callNative(type, nativeArgs.length, nativeArgs);
             Log.d(TAG, "call: " + Integer.toString(type) + " => " + commandResult);
