@@ -42,10 +42,10 @@ before_script:
     - brew install gradle >brew-install.log
     - brew install adobe-air-sdk >>brew-install.log
     - brew install android-sdk >>brew-install.log
-    - brew install android-ndk >>brew-install.log
+    - brew install android-ndk
     # Adobe Flash Player for CLI
-    - brew install caskroom/cask/brew-cask
-    - brew cask install flash-player-debugger
+    - brew install caskroom/cask/brew-cask >>brew-install.log
+    - brew cask install flash-player-debugger >>brew-install.log
     # Set env. variable used by FlexUnit
     - export FLASHPLAYER_DEBUGGER="$HOME/Applications/Flash Player Debugger.app/Contents/MacOS/Flash Player Debugger"
     # Set env. variable used by Gradle
