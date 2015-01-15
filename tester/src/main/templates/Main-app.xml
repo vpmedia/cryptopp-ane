@@ -29,7 +29,7 @@
  ~ =END MIT LICENSE
  ~
 -->
-<application xmlns="http://ns.adobe.com/air/application/15.0">
+<application xmlns="http://ns.adobe.com/air/application/16.0">
     <id>com.docmet.extensions.cryptopp.tester</id>
     <filename>CryptoPPANETester</filename>
     <name>CryptoPP ANE Tester</name>
