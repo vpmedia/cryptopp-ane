@@ -48,7 +48,17 @@ model {
             path file(MINGW_HOME).absolutePath + '/bin'
         }
     }
-     repositories {
+    components {
+        main(NativeLibrarySpec) {
+            sources {
+                cpp {
+                    lib library: 'FlashRuntimeExtensions', linkage: 'shared'
+                    lib library: 'common', linkage: 'static'
+                } 
+            }        
+        }
+    }
+    repositories {
         libs(PrebuiltLibraries) {
             FlashRuntimeExtensions { 
                 binaries.withType(StaticLibraryBinary) {
@@ -66,20 +76,6 @@ model {
                 }
             }
         }
-    }
-}
-
-libraries {
-    main {   
-    }
-}
-
-sources {
-    main {
-        cpp {
-            lib library: 'FlashRuntimeExtensions', linkage: 'shared'
-            lib library: 'common', linkage: 'static'
-        } 
     }
 }
 
